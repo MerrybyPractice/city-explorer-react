@@ -4,11 +4,11 @@ import SearchForm from './search-form.js';
 import SearchResults from './search-results.js'; 
 import ThisMap from './map.js';
 import superagent from 'superagent';
-import DarkSkyResults from './dark-sky-results.js';
-import MovieDBResults from './movie-db-results.js';
-import EventBriteResults from './eventbrite-results.js';
-import YelpResults from './yelp-results.js';
-import Trails from './trails.js';
+//import DarkSkyResults from './dark-sky-results.js';
+//import MovieDBResults from './movie-db-results.js';
+//import EventBriteResults from './eventbrite-results.js';
+//import YelpResults from './yelp-results.js';
+//import Trails from './trails.js';
 
 class App extends Component {
 
@@ -53,43 +53,55 @@ class App extends Component {
 
   const MovieDBResultsResponse = await superagent.get(MovieDBResultsUrl)
 
+  const EventBriteResultsUrl = `${url}/events?${queryString}`
+
+  const EventBriteResultsResponse = await superagent.get(EventBriteResultsUrl)
+
+  const YelpResultsUrl = `${url}/yelp?${queryString}`
+
+  const YelpResultsResponse = await superagent.get(YelpResultsUrl)
+
+  const TrailsUrl = `${url}/trails?${queryString}`
+
+  const TrailsResponse = await superagent.get(TrailsUrl)
+
   this.setState({
     location,
     DarkSkyResults : DarkSkyResultsResponse,
-    MovieDBResults : MovieDBResultsUrl,
-    EventBriteResults : [], 
-    YelpResults : [], 
-    Trails : []
+    MovieDBResults : MovieDBResultsResponse,
+    EventBriteResults : EventBriteResultsResponse, 
+    YelpResults : YelpResultsResponse, 
+    Trails : TrailsResponse
 
   })
 
   }
 
-  render(){
-    return(
-      <> 
-      <ThisMap/>
-      </>
-    )
-  }
-
-  // render() { 
+  // render(){
   //   return(
-  //     //will need more handlers to pass data into these classes, currently waiting on correct URL formatting. 
-  //     <Fragment>
-  //     <Header/>
-  //     {/* <SearchForm handleSubmit={this.searchEntered}/> */}
-  //     {/* {this.state.location && ( */}
-  //       <>
-  //       {<thisMap/> /*latitude={this.state.location.latitude} longitude={this.state.location.longitude}/> */}
-  //       {/* <SearchResults DarkSkyResults={this.state.DarkSkyResults} MovieDBResults={this.state.MovieDBResults} EventBriteResults={this.state.EventBriteResults} Trails = {this.state.Trails} YelpResults={this.state.YelpResults}/> */}
-  //       </>
-  //     {/* )} */}
-  //     </Fragment>
-  
-  //   );
-      
+  //     <> 
+  //     <ThisMap/>
+  //     </>
+  //   )
   // }
+
+  render() { 
+    return(
+      //will need more handlers to pass data into these classes, currently waiting on correct URL formatting. 
+      <Fragment>
+      <Header/>
+      <SearchForm handleSubmit={this.searchEntered}/>
+      {this.state.location && (
+        <>
+        <ThisMap/> latitude={this.state.location.latitude} longitude={this.state.location.longitude}/>
+        <SearchResults DarkSkyResults={this.state.DarkSkyResults} MovieDBResults={this.state.MovieDBResults} EventBriteResults={this.state.EventBriteResults} Trails = {this.state.Trails} YelpResults={this.state.YelpResults}/>
+        </>
+       )} 
+      </Fragment>
+  
+    );
+      
+  }
 }
 
 export default App;

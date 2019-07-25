@@ -12,11 +12,11 @@ export default class Result extends Component{
   render(){
     return(
       <Fragment>
-        <section>{Trails}</section>
-        <section>{DarkSkyResults}</section>
-        <section>{MovieDBResults}</section>
-        <section>{YelpResults}</section>
-        <section>{EventBriteResults}</section>
+       <Trails/>
+        <DarkSkyResults/>
+        <MovieDBResults/>
+        <YelpResults/>
+        <EventBriteResults/>
       </Fragment>
     )
   }
