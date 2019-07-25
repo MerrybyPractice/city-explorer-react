@@ -9,6 +9,11 @@ export default class Result extends Component{
 
     }
   }
+
+  resultsToUl = (props) => {
+    
+  }
+
   render(){
     return(
       <Fragment>
