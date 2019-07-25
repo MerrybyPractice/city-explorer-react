@@ -1,3 +1,51 @@
+# React City Explorer Front End
+
+## Time Estimates
+
+### Number and name of feature: Header
+
+Estimate of time needed to complete: 5min
+
+Start time: 3:37
+
+Finish time: 3:40
+
+Actual time needed to complete: 3 mins
+
+### Number and name of feature: Search From
+
+Estimate of time needed to complete: Worked Through in Class
+
+### Number and name of feature: Map
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 3:57
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+### Number and name of feature: Search Results
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+### Number and name of feature: Results
+
+Estimate of time needed to complete: 1 hour and 45 mins
+
+Start time: 
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

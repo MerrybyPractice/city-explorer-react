@@ -1,6 +1,7 @@
 import React, {Fragment, Component} from 'react';
 
 export default class SearchForm extends Component{
+
   constructor(props){
     super(props); 
     this.state = {
@@ -16,7 +17,7 @@ export default class SearchForm extends Component{
 
   handleSubmit = e => {
     e.preventDefault(); 
-    //send query to API
+    this.props.handleSubmit(this.state.query)
   }
 
   render(){

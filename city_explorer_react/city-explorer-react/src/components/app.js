@@ -2,9 +2,9 @@ import React, {Fragment, Component} from 'react';
 import Header from './header.js'
 import SearchForm from './search-form.js'
 import SearchResults from './search-results.js' 
-import Map from './map.js'
+import thisMap from './map.js'
 
-class App extends Component() {
+class App extends Component {
 
   constructor(props){
     super(props)
@@ -19,12 +19,18 @@ class App extends Component() {
     }
   }
 
+  searchEntered = query => {
+    alert(query)
+    //use query to hit API
+  }
+
   render(){
     return(
 
       <Fragment>
-      <SearchForm/>
-      <Map/>
+      <Header/>
+      <SearchForm handleSubmit={this.searchEntered}/>
+      <thisMap/>
       <SearchResults/>
       <SearchResults/>
       <SearchResults/>
