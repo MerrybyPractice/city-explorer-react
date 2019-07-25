@@ -17,6 +17,7 @@ export default class MovieDBResults extends Component{
 
   render(){
     return(
+      //loop throupgh to print all with map 
       <Fragment>
         <ul>{this.title}</ul>
         <ul>{this.overview}</ul>

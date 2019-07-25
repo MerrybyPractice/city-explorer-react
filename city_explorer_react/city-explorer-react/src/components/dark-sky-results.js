@@ -11,6 +11,7 @@ export default class DarkSkyResults extends Component{
 
   render(){
     return(
+      //loop through to print all? 
       <Fragment>
         <ul>{this.forecast}</ul>
         <ul>{this.time}</ul>
