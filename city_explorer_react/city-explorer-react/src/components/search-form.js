@@ -22,12 +22,12 @@ export default class SearchForm extends Component{
 
   render(){
     return(
-      
+      <Fragment>
         <form onSubmit={this.handleSubmit}>
         <input value={this.state.query} onChange={this.handleChange}></input>
         <button> Search </button>
         </form>
-      
+      </Fragment>
     )
   }
 }
