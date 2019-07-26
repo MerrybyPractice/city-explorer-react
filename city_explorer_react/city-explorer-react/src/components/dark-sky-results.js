@@ -7,7 +7,7 @@ export default props => (
   <ul>
     {props.data.map(day=>(
 
-      <li>{day.time} : {day.forecast}</li>
+      <li key={day.time}>{day.time} : {day.forecast}</li>
       
     ))}
   </ul>

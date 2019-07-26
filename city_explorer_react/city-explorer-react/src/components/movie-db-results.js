@@ -1,33 +1,21 @@
-import React, {Fragment, Component} from 'react';
+import React from 'react';
 
 //MovieDB 
-export default class MovieDBResults extends Component{
-  constructor(props){
-    super(props); 
-    this.state = {
-      title : props.title, 
-      overview : props.overview, 
-      averageVotes : props.averageVotes, 
-      totalVotes : props.totalVotes, 
-      image : props.image, 
-      popularity : props.popularity, 
-      releasedOn : props.releasedOn
-    }
-  }
-
-  render(){
-    return(
-      //loop throupgh to print all with map 
-      <Fragment>
-        <ul>{this.title}</ul>
-        <ul>{this.overview}</ul>
-        <ul>{this.averageVotes}</ul>
-        <ul>{this.totalVotes}</ul>
-        <ul>{this.image}</ul>
-        <ul>{this.popularity}</ul>
-        <ul>{this.releasedOn}</ul>
-      </Fragment>
+export default props => (
+  <>
+  <h2> Movies </h2>
+  <ul>
+    {props.data.map( movie => (
+      <li key ={movie.image_url}> {movie.title} 
+      {movie.image_url} 
+      {movie.overview} 
+      {movie.average_votes}
+      {movie.total_votes} 
+      {movie.popularity} 
+      {movie.released_on}</li>
     )
-  }
 
-}
+    )}
+  </ul>
+  </>
+)      

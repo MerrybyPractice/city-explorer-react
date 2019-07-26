@@ -1,24 +1,16 @@
-import React, {Fragment, Component} from 'react';
-//Yelp 
-export default class YelpResults extends Component{
-  constructor(props){
-    super(props); 
-    this.state = {
-      image : props.image,
-      price : props.price, 
-      rating : props.rating, 
-      url : props.url
-    }
-  }
+import React from 'react';
 
-  render(){
-    return(
-      <Fragment>
-        <ul>this.image</ul>
-        <ul>this.price</ul>
-        <ul>this.rating</ul>
-        <ul>this.url</ul>
-      </Fragment>
-    )
-  }
-}
+export default props => (
+  <>
+  <h2> Business Reviews from Yelp </h2>
+  <ul>
+    {props.data.map( business=>(
+      <li key={business.url}> {business.name} 
+      {business.image_url} 
+      {business.rating} 
+      {business.url}
+      </li>
+    ))}
+  </ul>
+  </>
+)
