@@ -15,24 +15,18 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      //needs to be dynamically returned from API
-
       location : null, 
       DarkSkyResults : [],
       MovieDBResults : [], 
       EventBriteResults : [], 
       YelpResults : [], 
-      Trails : []
-
-
+      Trails : [],
       }
     }
   
-
   searchEntered = async query => {
-    alert(query)
     
-    const url = 'https://city-explorer-backend.herokuapp.com';
+    const url = 'https://jb-flask-hello-world.onrender.com';
 
     const locationData = await superagent.get(`${url}/location?data=${query}`);
 
@@ -41,9 +35,13 @@ class App extends Component {
       formatted_query : locationData.body.formatted_query, 
       latitude: locationData.body.latitude,
       longitude: locationData.body.longitude,
+
+  
   }
 
-  const queryString = `data[formatted_query=${location.formatted_query}&data[latitude]=${location.latitude}&data[longitude]=${location.longitude}&data[search_query]=${location.search_query}`
+  console.log(location)  
+  
+  const queryString = `data[formatted_query]=${location.formatted_query}&data[latitude]=${location.latitude}&data[longitude]=${location.longitude}&data[search_query]=${location.search_query}`
 
   const DarkSkyResultsUrl = `${url}/weather?${queryString}`
 
@@ -61,6 +59,7 @@ class App extends Component {
 
   const YelpResultsResponse = await superagent.get(YelpResultsUrl)
 
+
   const TrailsUrl = `${url}/trails?${queryString}`
 
   const TrailsResponse = await superagent.get(TrailsUrl)
@@ -72,29 +71,20 @@ class App extends Component {
     EventBriteResults : EventBriteResultsResponse, 
     YelpResults : YelpResultsResponse, 
     Trails : TrailsResponse
-
+    
   })
 
   }
 
-  // render(){
-  //   return(
-  //     <> 
-  //     <ThisMap/>
-  //     </>
-  //   )
-  // }
-
   render() { 
     return(
-      //will need more handlers to pass data into these classes, currently waiting on correct URL formatting. 
       <Fragment>
       <Header/>
       <SearchForm handleSubmit={this.searchEntered}/>
       {this.state.location && (
         <>
         <ThisMap/> latitude={this.state.location.latitude} longitude={this.state.location.longitude}/>
-        <SearchResults DarkSkyResults={this.state.DarkSkyResults} MovieDBResults={this.state.MovieDBResults} EventBriteResults={this.state.EventBriteResults} Trails = {this.state.Trails} YelpResults={this.state.YelpResults}/>
+        <SearchResults DarkSkyResults={this.state.DarkSkyResults.body} MovieDBResults={this.state.MovieDBResults.body} EventBriteResults={this.state.EventBriteResults.body} Trails = {this.state.Trails.body} YelpResults={this.state.YelpResults.body}/>
         </>
        )} 
       </Fragment>

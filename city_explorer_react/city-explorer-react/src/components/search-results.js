@@ -1,4 +1,4 @@
-import React, {Fragment, Component} from 'react';
+import React, {Fragment} from 'react';
 import Trails from './trails.js'; 
 import DarkSkyResults from './dark-sky-results.js'
 import MovieDBResults from './movie-db-results.js'
@@ -6,19 +6,20 @@ import YelpResults from './yelp-results.js'
 import EventBriteResults from './eventbrite-results.js'
 
 
-//refactor for each API, ex, need a <Yelp>, <MovieDB>, <EventBrite>, ect.
-export default class Result extends Component{
- 
-  render(){
+  export default props => {
+    console.log(props.EventBriteResults)
     return(
       <Fragment>
-       <Trails/>
-        <DarkSkyResults/>
-        <MovieDBResults/>
-        <YelpResults/>
-        <EventBriteResults/>
+        
+       <Trails data = {props.Trails}/>
+        <DarkSkyResults data = {props.DarkSkyResults} />
+        <MovieDBResults data = {props.MovieDBResults}/>
+        <YelpResults data = {props.YelpResults}/>
+        <EventBriteResults data = {props.EventBriteResults}/>
+
       </Fragment>
     )
   }
 
-}
+
+
